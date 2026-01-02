@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>No Money → Have Money</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --primary: #22c55e;
+      --primary-dark: #16a34a;
+      --border: #1f2937;
+      --radius: 12px;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: radial-gradient(circle at top left, #0b1020, #0f172a);
+      color: var(--text);
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    header { background: rgba(11,16,32,0.8); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+    .brand-title {
+      font-size: 1.6rem; font-weight: 800;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .btn { border:none; border-radius:var(--radius); padding:10px 16px; font-weight:600; cursor:pointer; }
+    .btn.primary { background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#062012; }
+    .btn.ghost { background:transparent; border:1px solid var(--border); color:var(--text); }
+    section { padding:40px 0; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; margin-bottom:20px; }
+    h1,h2,h3 { margin-top:0; }
+    footer { padding:20px; text-align:center; color:var(--muted); border-top:1px solid var(--border); }
+    /* Accordion styles */
+    .accordion-btn { cursor:pointer; background:#111827; color:#e5e7eb; padding:10px; border:none; width:100%; text-align:left; font-weight:600; }
+    .accordion-content { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+    .accordion-btn.active + .accordion-content { max-height:300px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-inner">
+      <div class="brand-title">💸 No Money → 💰 Have Money</div>
+      <nav>
+        <button class="btn ghost" data-scroll="home">Home</button>
+        <button class="btn ghost" data-scroll="about">About</button>
+        <button class="btn ghost" data-scroll="services">Services</button>
+        <button class="btn ghost" data-scroll="kyc">KYC</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Landing -->
+    <section id="home">
+      <div class="card">
+        <h1>Turn “No Money” into “Have Money”</h1>
+        <p>Apply in minutes, track your loan, and manage repayments — all in one place.</p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="card">
+        <h2>About Us</h2>
+        <p>
+          <strong>No Money → Have Money</strong> is a demo loan app front‑end designed to showcase how instant loan platforms work. 
+          We focus on simplicity, transparency, and speed — helping users understand the flow from application to disbursal.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="card">
+        <button class="accordion-btn">Services Provided</button>
+        <div class="accordion-content">
+          <ul>
+            <li>📄 Easy registration and login</li>
+            <li>⚡ Instant loan application</li>
+            <li>🔍 KYC verification (demo only)</li>
+            <li>📊 Loan calculator with EMI preview</li>
+            <li>📱 Dashboard to track loan status</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- KYC -->
+    <section id="kyc">
+      <div class="card">
+        <h2>KYC & Instant Loan</h2>
+        <p>
+          For real loan apps, <strong>KYC (Know Your Customer)</strong> verification is mandatory. 
+          This demo simulates KYC checks and instant loan disbursal to help you visualize the process. 
+          In production, this would involve secure identity verification and compliance with financial regulations.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 No Money → Have Money. All rights reserved.</p>
+    <p>This is a front‑end demo only. No real loans are processed.</p>
+  </footer>
+
+  <script>
+    // Smooth scroll navigation
+    document.querySelectorAll('[data-scroll]').forEach(btn=>{
+      btn.onclick=()=>{
+        const target=document.getElementById(btn.dataset.scroll);
+        if(target){ target.scrollIntoView({behavior:'smooth'}); }
+      };
+    });
+    // Accordion toggle
+    document.querySelectorAll('.accordion-btn').forEach(btn=>{
+      btn.onclick=()=>btn.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
